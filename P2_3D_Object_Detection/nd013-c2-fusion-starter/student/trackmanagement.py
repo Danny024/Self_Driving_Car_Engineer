@@ -34,21 +34,33 @@ class Track:
         # unassigned measurement transformed from sensor to vehicle coordinates
         # - initialize track state and track score with appropriate values
         ############
+        sensor_pos = np.ones((4, 1))
+        sensor_pos[:3] = meas.z
+        vehicle_pos = meas.sensor.sens_to_veh @ sensor_pos
 
-        self.x = np.matrix([[49.53980697],
-                        [ 3.41006279],
-                        [ 0.91790581],
-                        [ 0.        ],
-                        [ 0.        ],
-                        [ 0.        ]])
-        self.P = np.matrix([[9.0e-02, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 9.0e-02, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 6.4e-03, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 2.5e+03, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 2.5e+03, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 2.5e+01]])
-        self.state = 'confirmed'
-        self.score = 0
+        self.x = np.zeros((6,1))
+        self.x[:3] = vehicle_pos[:3]
+
+        # Set up the estimation error covariance matrix
+        self.P = np.zeros((6,6))
+        rotation_matrix = meas.sensor.sens_to_veh[:3, :3]
+        sensor_covariance = meas.R
+
+        #Compute position covariance in vehicle coordinates
+        pos_covariance = rotation_matrix @ sensor_covariance @ rotation_matrix.T
+
+        # Define velocity covariance using predefined parameters
+        vel_covariance = np.diag([
+            params.sigma_p44 ** 2,
+            params.sigma_p55 ** 2,
+            params.sigma_p66 ** 2
+        ])
+        self.P[:3, :3] = pos_covariance
+        self.P[3:, 3:] = vel_covariance
+
+        
+        self.state = 'initialized'
+        self.score = 1.0 / params.window
         
         ############
         # END student code
@@ -107,9 +119,18 @@ class Trackmanagement:
             if meas_list: # if not empty
                 if meas_list[0].sensor.in_fov(track.x):
                     # your code goes here
-                    pass 
+                    track.score -= 1. / params.window
+                    track.score = max(track.score, 0.)
 
-        # delete old tracks   
+        # delete old tracks  
+        for track in self.track_list:
+            should_delete = (
+                (track.state == "confirmed" and track.score < params.delete_threshold) or 
+                (track.P[0,0] > params.max_P or track.P[1,1] > params.max_P) or
+                (track.score < 0.05)
+            )
+            if should_delete:
+                self.delete_track(track)
 
         ############
         # END student code
@@ -140,8 +161,19 @@ class Trackmanagement:
         # - set track state to 'tentative' or 'confirmed'
         ############
 
-        pass
-        
+        track.score += 1.0 / params.window
+        track.score = min (track.score, 1.0) # capping the score at a maximum of 1
+
+        #determine and update the state of the track
+        if track.state == "initialized":
+            #Transition to tentative
+            track.state = "tentative"
+        elif track.state == "tentative" and track.score > params.confirmed_threshold:
+            # if the score meets the threshold change state to confirmed
+            track.state = "confirmed"
+        elif track.state not in {"tentative", "confirmed"}:
+            # Raise an error for any unrecognized state
+            raise ValueError(f"Unrecognized state for track: '{track.state}'")
         ############
         # END student code
         ############ 

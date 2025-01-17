@@ -12,6 +12,7 @@
 
 # imports
 import numpy as np
+import math
 
 # add project directory to python path to enable relative imports
 import os
@@ -48,7 +49,23 @@ class Sensor:
         # otherwise False.
         ############
 
-        return True
+        #Convert the object's position to the sensor's coordinate frame
+        vehicles_coords  = np.ones((4,1)) #Homogeneous coordinates
+        vehicles_coords[:3] = x[:3].reshape(3,1)
+        sensor_coords = self.veh_to_sens @ vehicles_coords
+
+        #Extract the x and y coordinates from the sensor's frame
+        x_sensor, y_sensor, _ = sensor_coords[:3]
+
+        #Check to avoid division by zero error
+        if x_sensor == 0:
+            raise ValueError (f"Invalid sensor frame coordinates: {sensor_coords.flatten().tolist()}")
+        
+        #calculate the angle of the object relative to the sensor
+        angle = math.atan2(y_sensor, x_sensor)
+
+        #Confir if the angle lies within the FOV range
+        return self.fov[0] <= angle <= self.fov[1]
         
         ############
         # END student code
@@ -71,7 +88,17 @@ class Sensor:
             # - return h(x)
             ############
 
-            pass
+            # Transform position estimate from vehicle to camera coordinates
+            pos_veh = np.ones((4,1))
+            pos_veh[0:3] = x[0:3]
+            pos_sens = self.veh_to_sens * pos_veh # transform from vehicle to sensor coordinates
+            if pos_sens[0, 0] == 0:
+                raise ValueError(f"Invalid coordinate gotten {pos_sens.tolist()}")
+            else:
+                # Project the coordinates into the image space
+                image_x = self.c_i - self.f_i * pos_sens[1, 0] / pos_sens[0, 0]
+                image_y = self.c_j - self.f_j * pos_sens[2, 0] / pos_sens[0, 0]
+                return np.array([[image_x], [image_y]])  
         
             ############
             # END student code
@@ -114,10 +141,9 @@ class Sensor:
         ############
         # TODO Step 4: remove restriction to lidar in order to include camera as well
         ############
-        
-        if self.name == 'lidar':
-            meas = Measurement(num_frame, z, self)
-            meas_list.append(meas)
+
+        if self.name in {'lidar', 'camera'}:
+            meas_list.append(Measurement(num_frame, z, self))
         return meas_list
         
         ############
@@ -156,7 +182,15 @@ class Measurement:
             # TODO Step 4: initialize camera measurement including z and R 
             ############
 
-            pass
+            sigma_cam_i, sigma_cam_j = params.sigma_cam_i, params.sigma_cam_j
+
+            #Initialize measuremenr vector z
+            self.z = np.array([[z[0]], [z[1]]])
+
+            #Initialize measurement covariance matrix R
+            self.R = np.diag([sigma_cam_i ** 2, sigma_cam_j**2])
+
+            self.width, self.length = z[2], z[3]
         
             ############
             # END student code
