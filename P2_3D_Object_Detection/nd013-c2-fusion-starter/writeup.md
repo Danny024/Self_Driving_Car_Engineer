@@ -47,4 +47,4 @@ The label and the detected objects can be seen in the figure below
 ### Section 4: Performance Evaluation for object Detection
 The performance of the model for the sequence for the sequence `training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord` and frames [0,200] is 
 precision = 0.9539473684210527, recall = 0.9477124183006536
-![Metrics](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/metrics.png)
+![Metrics](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/metrics.png)
