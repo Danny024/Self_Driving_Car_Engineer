@@ -3,7 +3,7 @@
 ### Section 1 :Compute Lidar Point Cloud from Range 
 1.1 (ID_S1_EX1):
 We visualize the range image below as seen below:
-![Range Image](image_results/range_image.png)
+![Range Image](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/range_image.png)
 
 1.2 ID_S1_EX2
 The example of vehicles as seen from the point cloud can be seen below
