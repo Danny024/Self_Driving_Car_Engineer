@@ -26,18 +26,22 @@ The BEV image height and intensity can be seen in the image below
 The Bird Eye View Point cloud 
 
 The image height result of the BEV
+
 ![Image height bev](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_height_bev.png)
 
 The image intensity map of the BEV
+
 ![Intensity Map](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/intensity_map.png)
 
 
 ### Section 3: Model-Based Object Detection Bird's Eye View Image
 The BEV Point Cloud and the detected objects can be seen below
 The Image label as seen below:
+
 ![Image Label](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/frame_0.png)
 
 The label and the detected objects can be seen in the figure below
+
 ![labels and dtetected objects](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/labelsvsobjects.png)
 
 ### Section 4: Performance Evaluation for object Detection
