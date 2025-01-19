@@ -8,7 +8,7 @@ We visualize the range image below as seen below:
 1.2 ID_S1_EX2
 The example of vehicles as seen from the point cloud can be seen below
 The below are images of vehicles as seeen in the point cloud
-![Point Cloud with images](image_results/sequence3_with_pcl.png)
+![Point Cloud with images](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/sequence3_with_pcl.png)
 
 ![Point Cloud with Images2](image_results/image_and_pcl.png)
 
