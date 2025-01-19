@@ -42,7 +42,7 @@ The Image label as seen below:
 
 The label and the detected objects can be seen in the figure below
 
-![labels and dtetected objects](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/labelsvsobjects.png)
+![labels and dtetected objects](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/labelsvsobjects.png)
 
 ### Section 4: Performance Evaluation for object Detection
 The performance of the model for the sequence for the sequence `training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord` and frames [0,200] is 
