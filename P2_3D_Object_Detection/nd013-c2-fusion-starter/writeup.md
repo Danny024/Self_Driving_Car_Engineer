@@ -10,7 +10,7 @@ The example of vehicles as seen from the point cloud can be seen below
 The below are images of vehicles as seeen in the point cloud
 ![Point Cloud with images](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/sequence3_with_pcl.png)
 
-![Point Cloud with Images2](image_results/image_and_pcl.png)
+![Point Cloud with Images2](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/image_and_pcl.png)
 
 - The stable vehicle features as see in the point cloud above are :
    
@@ -26,21 +26,21 @@ The BEV image height and intensity can be seen in the image below
 The Bird Eye View Point cloud 
 
 The image height result of the BEV
-![Image height bev](image_results/image_height_bev.png)
+![Image height bev](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/image_height_bev.png)
 
 The image intensity map of the BEV
-![Intensity Map](image_results/intensity_map.png)
+![Intensity Map](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/intensity_map.png)
 
 
 ### Section 3: Model-Based Object Detection Bird's Eye View Image
 The BEV Point Cloud and the detected objects can be seen below
 The Image label as seen below:
-![Image Label](image_results/frame_0.png)
+![Image Label](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/frame_0.png)
 
 The label and the detected objects can be seen in the figure below
-![labels and dtetected objects](image_results/labelsvsobjects.png)
+![labels and dtetected objects](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/labelsvsobjects.png)
 
 ### Section 4: Performance Evaluation for object Detection
 The performance of the model for the sequence for the sequence `training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord` and frames [0,200] is 
 precision = 0.9539473684210527, recall = 0.9477124183006536
-![Metrics](image_results/metrics.png)
+![Metrics](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/metrics.png)
