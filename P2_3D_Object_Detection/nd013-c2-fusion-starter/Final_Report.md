@@ -44,7 +44,7 @@ The RMSE of all the tracks is observed to be below 0.2 as seen in the figure bel
 ### 2. Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)? 
  The use of Camera-LiDAR fusion is preferred over the LiDAR-only tracking system  because the results presented in the project are better:
 
-The result of fusing the  visual and lidar data brings about better object definition. This means that the fusion based tracking has smaller RMSE  values Positives: as The demonstrated system by is the better project, at and eliminating the ghost bounding tracks boxes than match the the LiDAR vehicle only more based closely.
+
 
 I observed that there is a reduction in False Positives when using camera and lidar data.
 
