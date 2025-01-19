@@ -38,7 +38,7 @@ The image intensity map of the BEV
 The BEV Point Cloud and the detected objects can be seen below
 The Image label as seen below:
 
-![Image Label](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/frame_0.png)
+![Image Label](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/frame_0.png)
 
 The label and the detected objects can be seen in the figure below
 
