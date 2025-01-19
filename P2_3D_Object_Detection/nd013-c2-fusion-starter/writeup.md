@@ -10,7 +10,7 @@ The example of vehicles as seen from the point cloud can be seen below
 The below are images of vehicles as seeen in the point cloud
 ![Point Cloud with images](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/sequence3_with_pcl.png)
 
-![Point Cloud with Images2](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_results/image_and_pcl.png)
+![Point Cloud with Images2](https://github.com/Danny024/Self_Driving_Car_Engineer/blob/main/P2_3D_Object_Detection/nd013-c2-fusion-starter/image_results/mid_project/image_and_pcl.png)
 
 - The stable vehicle features as see in the point cloud above are :
    
