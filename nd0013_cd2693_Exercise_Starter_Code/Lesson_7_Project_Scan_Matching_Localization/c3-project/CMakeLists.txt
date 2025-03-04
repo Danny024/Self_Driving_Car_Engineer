@@ -18,14 +18,26 @@ set(carla_libs  ${CARLALIB_DIR}/libboost_filesystem.a ${CARLALIB_DIR}/libboost_p
 
 link_directories(libcarla-install/lib)
 include_directories(libcarla-install/include)
+include_directories(/opt/carla-simulator/Plugins/carlaviz/backend/third_party/LibCarla/source)
 include_directories(libcarla-install/include/system)
 include_directories(rpclib/include)
+include_directories(/home/ka/carla/LibCarla/source)
+include_directories(/home/daniel/Self_Driving_Car_Engineer/nd0013_cd2693_Exercise_Starter_Code/Lesson_7_Project_Scan_Matching_Localization/rcplib/rpclib/include)
+include_directories(/home/daniel/Self_Driving_Car_Engineer/nd0013_cd2693_Exercise_Starter_Code/Lesson_7_Project_Scan_Matching_Localization/rcplib/rpclib/include/rpc/msgpack)
+include_directories(/home/daniel/Self_Driving_Car_Engineer/nd0013_cd2693_Exercise_Starter_Code/Lesson_7_Project_Scan_Matching_Localization/rcplib/rpclib/include/rpc)
+include_directories("/usr/include/eigen3")
+include_directories(/usr/local/include)
+include_directories(/home/daniel/recastnavigation/Recast/Include)
 
 find_package(PCL 1.2 REQUIRED)
+find_package(Boost 1.71.0 COMPONENTS filesystem REQUIRED)
+
+
 
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
+include_directories(${Boost_INCLUDE_DIRS})
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
@@ -33,4 +45,4 @@ endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 add_executable(cloud_loc ${sources} )
 
-target_link_libraries(cloud_loc ${PCL_LIBRARIES} ${carla_libs})
+target_link_libraries(cloud_loc ${PCL_LIBRARIES} ${carla_libs} ${Boost_LIBRARIES})
