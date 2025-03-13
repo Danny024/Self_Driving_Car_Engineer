@@ -16,35 +16,41 @@ The result shows the optimized performance which has better trajectory tracking 
 The PID controller tuning process was based on the initial parameters  which were taken from the reference (https://knowledge.udacity.com/questions/939702) and then  adjusted according to the data collected during the simulation from steering_pid.txt and throttle_pid.txt. In this  case, the hypothetical plots of the throttle and steering responses are presented and compared for the initial parameters  (steer: 0.2, 0.01, 0.05; throttle:  0.25, 0.005, 0.03) and final tuned parameters  (steer: 0.18, 0.015, 0.03; throttle:  0.22, 0.008, 0.025).
 
 Throttle PID Response -  Before Tuning
+
 ![Throttle before tuning](pid_controller/screenshot/plot_throttle_initial.png)
 
 
 The initial throttle response plot shows the throttle error (blue), the throttle output  (green), and the brake output (red) for 21 iterations (about 20 s). The  error is initialized at 2.05356 m/s and has a very fast decrease and then  oscillations (e.g., 1.98044, 1.11138 m/s), the  throttle output is maximal at 0.523658 and the brake output is not required as it is  used only when the error is negative (2.34342 m/s), i.e.,  0.600403. The large Kp (0.25) induces a strong response to the  error, while the small Ki (0.005) prevents the correction in the steady state, and the  Kd (0.03) is insufficient to dampen oscillations.
 
 Throttle PID Response -  After Tuning
+
 ![Throttle after tuning](pid_controller/screenshot/throttle_tuned.png)
 
 
 The throttle error is reduced more smoothly in the post-tuning simulation to near zero  with reduced oscillations (e.g., 1.98044, 0.685147  m/s). The throttle output is maintained between 0.468212 and 0.704035,  and the brake output is applied at 0.540056 for the negative error  (2.34342 m/s). The decrease in Kp (0.22) reduces the proportional kick, the  increase in Ki (0.008) improves the stability at the steady state, and the decrease in  Kd (0.025) provides a proper balance between the two, leading to a more even  control action.
 
 Steering PID Response - Before Tuning.
+
 ![steering before tuning](pid_controller/screenshot/plot_steering_initial.png)
 
 
 The steering plot also shows that the initial  steering error (blue) ranged from −0.00151048 to 0.817419  radians, and the output (green) reached the limits (+/− 1.0) at high  errors (+/− 0.817419). It also shows oscillations, for example,  −0.000920247 to 0.00141575, which is because of the high  Kp (0.2), which overcorrects, low Ki (0.01), which  corrects error accumulation poorly, and high Kd (0.05), which over-damps the system.
 
  Steering PID Response - After Tuning.
+
  ![steering after tuning](pid_controller/screenshot/steering_tuned.png)
 
 
 The steering error shows the same peaks  (0.817419 radians) but decays faster, the output is limited to ± 1.0 only  at the extreme values and the rest of the time it lies between −0.00042897 and  0.00326899. The reduced Kp (0.18) prevents overshoot,  the increased Ki (0.015) enhances the tracking of the system at steady state, and the  reduced Kd (0.03) optimizes the damping, which leads to improved steering behavior.
 
  Trajectory - Before Tuning.
+
 ![Initial Trajectory](pid_controller/screenshot/plot_trajectory_initial.png)
 
 The first trajectory plot shows that the actual path (orange dashed)  is not consistent with the waypoints (blue) and that there are sharp corrections, which means that the  closest-point calculation is inaccurate.
 
 Trajectory - After Tuning.
+
 ![Trajectory after tuning](pid_controller/screenshot/plot_trajectory_tuned.png)
 
 
